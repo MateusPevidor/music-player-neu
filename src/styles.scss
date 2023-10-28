@@ -1,0 +1,347 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Roboto, arial, sans-serif;
+}
+
+// :root {
+//   --bg-primary: #1f1f28;
+//   --bg-secondary: #292934;
+//   --bg-background: #23232f;
+//   --shadow-bright: #282836;
+//   --shadow-dark: #1e1e28;
+//   --text-regular: #ef8707;
+//   --text-dark: #d17300;
+//   --accent: #ef8707;
+//   --accent-dark: #d17300;
+//   --slider-completion: 0%;
+// }
+
+// :root {
+//   --bg-primary: #d1e2f8;
+//   --bg-secondary: #d3e1f8;
+//   --bg-background: #f1f3fc;
+//   --shadow-bright: #ffffff;
+//   --shadow-dark: #d1dcf0;
+//   --text-regular: #a2b0c9;
+//   --text-dark: #697791;
+//   --accent: #6281ff;
+//   --accent-dark: #3457e2;
+//   --slider-completion: 0%;
+// }
+
+#theme ~ main {
+  --bg-primary: #d1e2f8;
+  --bg-secondary: #d3e1f8;
+  --bg-background: #f1f3fc;
+  --shadow-bright: #ffffff;
+  --shadow-dark: #d1dcf0;
+  --text-regular: #a2b0c9;
+  --text-dark: #697791;
+  --accent: #6281ff;
+  --accent-dark: #3457e2;
+}
+
+#theme:checked ~ main {
+  --bg-primary: #1f1f28;
+  --bg-secondary: #292934;
+  --bg-background: #23232f;
+  --shadow-bright: #282836;
+  --shadow-dark: #1e1e28;
+  --text-regular: #ef8707;
+  --text-dark: #d17300;
+  --accent: #ef8707;
+  --accent-dark: #d17300;
+}
+
+i {
+  color: var(--text-dark);
+  &.hidden {
+    display: none;
+  }
+}
+
+body {
+  height: 100vh;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: var(--bg-primary);
+  transition: background 0.15s;
+}
+
+.wrapper {
+  height: 100%;
+  max-height: 814px;
+  width: 100%;
+  max-width: 376px;
+  background: var(--bg-background);
+  transition: background 0.15s;
+  border-radius: 48px;
+  padding: 2rem;
+  box-shadow: inset 1px 1px 2px 0px var(--shadow-bright),
+    3px 3px 6px 2px var(--shadow-dark);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h1 {
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: var(--text-regular);
+    text-transform: uppercase;
+  }
+
+  button {
+    width: 3rem;
+    height: 3rem;
+    color: var(--text-regular);
+    border-radius: 50%;
+    border: none;
+    background-color: var(--bg-background);
+    cursor: pointer;
+    transition: box-shadow 0.15s;
+
+    // prettier-ignore
+    box-shadow:
+      -4px -4px 8px 2px var(--shadow-bright), /* top left */
+      4px 4px 8px 2px var(--shadow-dark), /* bottom right */
+      inset 0px 0px 0px 0px var(--shadow-dark); /* in top left */
+
+    &:active {
+      // prettier-ignore
+      box-shadow:
+        -0px -0px 0px 0px var(--shadow-bright), /* top left */
+        0px 0px 0px 0px var(--shadow-dark), /* bottom right */
+        inset 2px 2px 4px 1px var(--shadow-dark); /* top left */
+    }
+  }
+}
+
+.content {
+  margin-top: 2rem;
+
+  .image-wrapper {
+    position: relative;
+    width: 92%;
+    margin: 0 auto;
+    height: 0;
+    padding-bottom: calc(92% - 1rem);
+    background: url(https://d1csarkz8obe9u.cloudfront.net/posterpreviews/moon-pink-cloud-cd-cover-music-design-template-dfd448b74fd90ea7cefe3e5970921877_screen.jpg);
+    background-position: 50% 50%;
+    background-size: cover;
+    border-radius: 50%;
+    // prettier-ignore
+    box-shadow:
+      -12px -12px 16px 4px var(--shadow-bright),
+      8px 8px 16px 0px var(--shadow-dark);
+
+    border: 8px solid var(--bg-background);
+  }
+
+  .info {
+    margin-top: 2rem;
+    text-align: center;
+    > h2 {
+      color: var(--text-dark);
+      font-size: 1.75rem;
+      font-weight: 500;
+    }
+    > p {
+      color: var(--text-regular);
+      font-size: 0.85rem;
+      margin-top: 0.25rem;
+    }
+  }
+}
+
+.progress {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+
+  .timestamps {
+    display: flex;
+    justify-content: space-between;
+    color: var(--text-regular);
+    font-size: 0.7rem;
+    font-weight: 500;
+  }
+
+  .progress-bar {
+    position: relative;
+    margin-top: 0.5rem;
+    width: 100%;
+    height: 0.5rem;
+    border-radius: 99rem;
+    -webkit-transition: 0.2s;
+    transition: opacity 0.2s;
+    appearance: none;
+    background-color: var(--bg-background);
+
+    cursor: pointer;
+
+    box-shadow: inset 2px 2px 4px 1px var(--shadow-dark);
+
+    &::-webkit-slider-thumb {
+      appearance: none;
+      width: 25px;
+      height: 25px;
+      background-color: var(--accent);
+      border: 8px solid var(--bg-background);
+      border-radius: 50%;
+      cursor: pointer;
+      position: relative;
+
+      // prettier-ignore
+      box-shadow:
+        -3px -3px 4px 1px var(--shadow-bright),
+        2px 2px 4px 0px var(--shadow-dark),
+        inset 2px 2px 2px var(--accent-dark);
+    }
+
+    &::-moz-range-thumb {
+      width: 12px;
+      height: 12px;
+      background-color: var(--accent);
+      border: 8px solid var(--bg-background);
+      border-radius: 50%;
+
+      // prettier-ignore
+      box-shadow:
+        -3px -3px 4px 1px var(--shadow-bright),
+        2px 2px 4px 0px var(--shadow-dark),
+        inset 2px 2px 2px var(--accent-dark);
+      outline: none;
+    }
+
+    &::before {
+      content: '';
+      height: 100%;
+      width: var(--slider-completion);
+      border-radius: 99rem;
+      position: absolute;
+      background-color: var(--accent);
+      box-shadow: inset 2px 2px 2px var(--accent-dark);
+    }
+  }
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5rem;
+  margin: 6rem 1rem 0;
+
+  button {
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--bg-background);
+    cursor: pointer;
+
+    transition: box-shadow 0.15s, background-color 0.15s;
+
+    // prettier-ignore
+    box-shadow:
+      -4px -4px 8px 2px var(--shadow-bright), /* top left */
+      4px 4px 8px 2px var(--shadow-dark), /* bottom right */
+      inset 0px 0px 0px 0px var(--shadow-dark); /* in top left */
+
+    &:active,
+    &.toggle.active {
+      // prettier-ignore
+      box-shadow:
+        -0px -0px 0px 0px var(--shadow-bright), /* top left */
+        0px 0px 0px 0px var(--shadow-dark), /* bottom right */
+        inset 4px 4px 6px 1px var(--shadow-dark); /* top left */
+    }
+  }
+}
+
+.theme-switch {
+  width: 3rem;
+  height: 1.5rem;
+  background-color: var(--bg-background);
+  border-radius: 99rem;
+  box-shadow: inset 4px 4px 6px 1px var(--shadow-dark);
+  position: relative;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+
+  &::before {
+    content: '';
+    background: url('../assets/sun-solid.svg');
+    background-position: 50% 50%;
+    background-size: 65%;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 1px;
+    left: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: var(--bg-background);
+    border-radius: 50%;
+
+    transition: 0.15s;
+
+    // prettier-ignore
+    box-shadow:
+      -1px -1px 2px var(--shadow-bright), /* top left */
+      1px 1px 2px var(--shadow-dark); /* bottom right */
+  }
+}
+
+#theme:checked ~ main > .theme-switch {
+  &::before {
+    background: url('../assets/moon-solid.svg');
+    background-position: 50% 50%;
+    background-size: 50%;
+    background-repeat: no-repeat;
+    left: 1.5rem;
+  }
+}
+
+input[type='checkbox'] {
+  display: none;
+}
+
+@media (max-height: 768px) {
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .content {
+    margin-top: 0;
+    .image-wrapper {
+      width: 85%;
+      padding-bottom: calc(85% - 1rem);
+    }
+    .info {
+      margin-top: 0.5rem;
+    }
+  }
+
+  .progress {
+    margin-top: 0;
+  }
+
+  .controls {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
